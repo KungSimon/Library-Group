@@ -11,10 +11,10 @@ namespace Library_Group.Objects
         [Required]
         [MaxLength(45)]
         public string Name { get; set; }
+        public List<Book> CategoryBooks { get; set; } = new List<Book>();
 
-        public Category(int id, string name)
+        public Category(string name)
         {
-            Id = id;
             Name = name;
         }
 

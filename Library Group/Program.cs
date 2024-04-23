@@ -1,3 +1,6 @@
+using Library_Group.Objects;
+using Microsoft.EntityFrameworkCore;
+
 namespace Library_Group
 {
     public class Program
@@ -8,6 +11,10 @@ namespace Library_Group
 
             // Add services to the container.
             builder.Services.AddRazorPages();
+
+            string connectionString = builder.Configuration.GetConnectionString("mySqlConnectionString");
+
+            builder.Services.AddDbContext<DatabaseContext>(option => option.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
             var app = builder.Build();
 

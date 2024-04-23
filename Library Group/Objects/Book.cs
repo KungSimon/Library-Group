@@ -16,9 +16,8 @@ namespace Library_Group.Objects
         public List<Category> Categories { get; set; }
         public List<Author> Authors { get; set; }
 
-        public Book(int id, string title, int pages, DateTime releaseDate)
+        public Book(string title, int pages, DateTime releaseDate)
         {
-            Id = id;
             Title = title;
             Pages = pages;
             ReleaseDate = releaseDate;
