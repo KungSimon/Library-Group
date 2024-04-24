@@ -22,36 +22,6 @@ namespace Library_Group.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
-            modelBuilder.Entity("AuthorBook", b =>
-                {
-                    b.Property<int>("AuthorBooksId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("AuthorsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("AuthorBooksId", "AuthorsId");
-
-                    b.HasIndex("AuthorsId");
-
-                    b.ToTable("AuthorBook");
-                });
-
-            modelBuilder.Entity("BookCategory", b =>
-                {
-                    b.Property<int>("CategoriesId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CategoryBooksId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CategoriesId", "CategoryBooksId");
-
-                    b.HasIndex("CategoryBooksId");
-
-                    b.ToTable("BookCategory");
-                });
-
             modelBuilder.Entity("Library_Group.Objects.Author", b =>
                 {
                     b.Property<int>("Id")
@@ -78,6 +48,12 @@ namespace Library_Group.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("AuthorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Pages")
                         .HasColumnType("int");
 
@@ -90,6 +66,10 @@ namespace Library_Group.Migrations
                         .HasColumnType("varchar(100)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
+
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Book");
                 });
@@ -112,34 +92,33 @@ namespace Library_Group.Migrations
                     b.ToTable("Category");
                 });
 
-            modelBuilder.Entity("AuthorBook", b =>
+            modelBuilder.Entity("Library_Group.Objects.Book", b =>
                 {
-                    b.HasOne("Library_Group.Objects.Book", null)
-                        .WithMany()
-                        .HasForeignKey("AuthorBooksId")
+                    b.HasOne("Library_Group.Objects.Author", "Author")
+                        .WithMany("Books")
+                        .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Library_Group.Objects.Author", null)
-                        .WithMany()
-                        .HasForeignKey("AuthorsId")
+                    b.HasOne("Library_Group.Objects.Category", "Category")
+                        .WithMany("Books")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Author");
+
+                    b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("BookCategory", b =>
+            modelBuilder.Entity("Library_Group.Objects.Author", b =>
                 {
-                    b.HasOne("Library_Group.Objects.Category", null)
-                        .WithMany()
-                        .HasForeignKey("CategoriesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Books");
+                });
 
-                    b.HasOne("Library_Group.Objects.Book", null)
-                        .WithMany()
-                        .HasForeignKey("CategoryBooksId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+            modelBuilder.Entity("Library_Group.Objects.Category", b =>
+                {
+                    b.Navigation("Books");
                 });
 #pragma warning restore 612, 618
         }
