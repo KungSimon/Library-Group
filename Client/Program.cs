@@ -89,9 +89,10 @@
             {
                 Console.WriteLine("Choose an option for authors:");
                 Console.WriteLine("1. Get all authors");
-                Console.WriteLine("2. Add an author");
-                Console.WriteLine("3. Update an author");
-                Console.WriteLine("4. Delete an author");
+                Console.WriteLine("2. Get author by ID");
+                Console.WriteLine("3. Add an author");
+                Console.WriteLine("4. Update an author");
+                Console.WriteLine("5. Delete an author");
                 Console.WriteLine("0. Back");
 
                 string choice = Console.ReadLine();
@@ -102,14 +103,19 @@
                         sender.GetAllAuthors();
                         break;
                     case "2":
-                        sender.AddAuthor();
+                        Console.WriteLine("Enter the ID of the author you want to find:");
+                        int authorId = Convert.ToInt32(Console.ReadLine());
+                        sender.GetAuthorById(authorId);
                         break;
                     case "3":
+                        sender.AddAuthor();
+                        break;
+                    case "4":
                         Console.WriteLine("Enter the ID of the author to update:");
                         int editAuthorId = Convert.ToInt32(Console.ReadLine());
                         sender.UpdateAuthor(editAuthorId);
                         break;
-                    case "4":
+                    case "5":
                         Console.WriteLine("Enter the ID of the author to delete:");
                         int deleteAuthorId = Convert.ToInt32(Console.ReadLine());
                         sender.DeleteAuthor(deleteAuthorId);
@@ -129,9 +135,10 @@
             {
                 Console.WriteLine("Choose an option for categories:");
                 Console.WriteLine("1. Get all categories");
-                Console.WriteLine("2. Add a category");
-                Console.WriteLine("3. Update a category");
-                Console.WriteLine("4. Delete a category");
+                Console.WriteLine("2. Find genre by id");
+                Console.WriteLine("3. Add a category");
+                Console.WriteLine("4. Update a category");
+                Console.WriteLine("5. Delete a category");
                 Console.WriteLine("0. Back");
 
                 string choice = Console.ReadLine();
@@ -142,14 +149,19 @@
                         sender.GetAllCategories();
                         break;
                     case "2":
-                        sender.AddCategory();
+                        Console.WriteLine("Enter the ID of the genre you want to find:");
+                        int genreId = Convert.ToInt32(Console.ReadLine());
+                        sender.GetAuthorById(genreId);
                         break;
                     case "3":
+                        sender.AddCategory();
+                        break;
+                    case "4":
                         Console.WriteLine("Enter the ID of the category to update:");
                         int editCategoryId = Convert.ToInt32(Console.ReadLine());
                         sender.UpdateCategory(editCategoryId);
                         break;
-                    case "4":
+                    case "5":
                         Console.WriteLine("Enter the ID of the category to delete:");
                         int deleteCategoryId = Convert.ToInt32(Console.ReadLine());
                         sender.DeleteCategory(deleteCategoryId);

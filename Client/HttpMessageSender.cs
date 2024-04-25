@@ -83,6 +83,38 @@ namespace Client
             }
         }
 
+        //To find a author by id
+        public void GetAuthorById(int id) 
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = client.GetAsync("https://localhost:7093/api/author?id=" + id).Result;
+            Console.WriteLine("Status code " + (int)response.StatusCode + " : " + response.StatusCode);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string result = response.Content.ReadAsStringAsync().Result;
+                Console.WriteLine(result);
+                Author author = JsonConvert.DeserializeObject<Author>(result);
+                Console.WriteLine("Id: " + author.Id + ", Name: " + author.Name);
+            }
+        }
+
+        //To find a category by id
+        public void GetCategoryById(int id)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = client.GetAsync("https://localhost:7093/api/category?id=" + id).Result;
+            Console.WriteLine("Status code " + (int)response.StatusCode + " : " + response.StatusCode);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string result = response.Content.ReadAsStringAsync().Result;
+                Console.WriteLine(result);
+                Category category = JsonConvert.DeserializeObject<Category>(result);
+                Console.WriteLine("Id: " + category.Id + ", Name: " + category.Name);
+            }
+        }
+
         //To add a book
         public void AddBook()
         {
