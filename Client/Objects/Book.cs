@@ -4,18 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Client
+namespace Client.Objects
 {
     public class Book
     {
-        public int ID;
+        public int Id;
         public string Title { get; set; }
         public int Pages { get; set; }
-        public DateTime ReleaseDate { get; set; }
+        public int ReleaseDate { get; set; }
 
-        public Book(int id,string title, int pages, DateTime releaseDate)
+
+        public Book(int id, string title, int pages, int releaseDate)
         {
-            ID = id;
+            Id = id;
             Title = title;
             Pages = pages;
             ReleaseDate = releaseDate;
