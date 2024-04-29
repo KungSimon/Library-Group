@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Library_Group.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240424122313_AddBookToDatabase")]
+    [Migration("20240429191343_AddBookToDatabase")]
     partial class AddBookToDatabase
     {
         /// <inheritdoc />
@@ -51,17 +51,17 @@ namespace Library_Group.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AuthorId")
+                    b.Property<int?>("AuthorId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CategoryId")
+                    b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<int>("Pages")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("ReleaseDate")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("ReleaseDate")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -97,21 +97,13 @@ namespace Library_Group.Migrations
 
             modelBuilder.Entity("Library_Group.Objects.Book", b =>
                 {
-                    b.HasOne("Library_Group.Objects.Author", "Author")
+                    b.HasOne("Library_Group.Objects.Author", null)
                         .WithMany("Books")
-                        .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AuthorId");
 
-                    b.HasOne("Library_Group.Objects.Category", "Category")
+                    b.HasOne("Library_Group.Objects.Category", null)
                         .WithMany("Books")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Author");
-
-                    b.Navigation("Category");
+                        .HasForeignKey("CategoryId");
                 });
 
             modelBuilder.Entity("Library_Group.Objects.Author", b =>

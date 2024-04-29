@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Library_Group.Objects
 {
@@ -8,19 +9,14 @@ namespace Library_Group.Objects
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+
         [Required]
         [MaxLength(100)]
         public string Title { get; set; }
         public int Pages { get; set; }
-        public DateTime ReleaseDate { get; set; }
-  
-        public int CategoryId { get; set; }
-        public Category Category { get; set; }
+        public int ReleaseDate { get; set; }
 
-        public int AuthorId { get; set; }
-        public Author Author { get; set; }
-
-        public Book(string title, int pages, DateTime releaseDate)
+        public Book(string title, int pages, int releaseDate)
         {
             Title = title;
             Pages = pages;

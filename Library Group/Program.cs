@@ -1,4 +1,5 @@
 using Library_Group.Objects;
+using Library_Group.Service;
 using Microsoft.EntityFrameworkCore;
 
 namespace Library_Group
@@ -11,6 +12,12 @@ namespace Library_Group
 
             // Add services to the container.
             builder.Services.AddRazorPages();
+
+            builder.Services.AddControllers();
+
+            builder.Services.AddTransient<BookService>();
+            builder.Services.AddTransient<AuthorService>();
+            builder.Services.AddTransient<CategoryService>();
 
             string connectionString = builder.Configuration.GetConnectionString("mySqlConnectionString");
 
@@ -34,6 +41,7 @@ namespace Library_Group
             app.UseAuthorization();
 
             app.MapRazorPages();
+            app.MapControllers();
 
             app.Run();
         }
