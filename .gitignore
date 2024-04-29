@@ -29,6 +29,8 @@ x86/
 bld/
 [Bb]in/
 [Oo]bj/
+Library Group/[Bb]in/
+Library Group/[Oo]bj/
 [Ll]og/
 [Ll]ogs/
 

@@ -12,7 +12,7 @@ namespace Library_Group.Objects
         [MaxLength(100)]
         public string Title { get; set; }
         public int Pages { get; set; }
-        public DateTime ReleaseDate { get; set; }
+        public int ReleaseDate { get; set; }
   
         public int CategoryId { get; set; }
         public Category Category { get; set; }
@@ -20,7 +20,7 @@ namespace Library_Group.Objects
         public int AuthorId { get; set; }
         public Author Author { get; set; }
 
-        public Book(string title, int pages, DateTime releaseDate)
+        public Book(string title, int pages, int releaseDate)
         {
             Title = title;
             Pages = pages;
