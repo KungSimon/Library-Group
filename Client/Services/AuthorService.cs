@@ -68,6 +68,13 @@ namespace Client.Services
                 return;
             }
         }
+
+        public void GetAuthorById()
+        {
+            Console.WriteLine("Enter the ID of the author:");
+            int authorId = Convert.ToInt32(Console.ReadLine());
+            sender.GetAuthorById(authorId);
+        }
     }
 }
 

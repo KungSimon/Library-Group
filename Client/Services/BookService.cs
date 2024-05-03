@@ -112,5 +112,12 @@ namespace Client.Services
                 return;
             }
         }
+
+        public void GetBookById()
+        {
+            Console.WriteLine("Enter the ID of the book:");
+            int bookId = Convert.ToInt32(Console.ReadLine());
+            sender.GetBookById(bookId); 
+        }
     }
 }

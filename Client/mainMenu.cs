@@ -72,9 +72,7 @@ namespace Client
                         bookService.PrintAllBooks();
                         break;
                     case "2":
-                        Console.WriteLine("Enter the ID of the book:");
-                        int bookId = Convert.ToInt32(Console.ReadLine());
-                        sender.GetBookById(bookId);
+                        bookService.GetBookById();
                         break;
                     case "3":
                         bookService.AddBook();
@@ -115,9 +113,7 @@ namespace Client
                         authorService.PrintAllAuthors();
                         break;
                     case "2":
-                        Console.WriteLine("Enter the ID of the author you want to find:");
-                        int authorId = Convert.ToInt32(Console.ReadLine());
-                        sender.GetAuthorById(authorId);
+                        authorService.GetAuthorById();
                         break;
                     case "3":
                         authorService.AddAuthor();
@@ -158,9 +154,7 @@ namespace Client
                         categoryService.PrintAllCategories();
                         break;
                     case "2":
-                        Console.WriteLine("Enter the ID of the genre you want to find:");
-                        int genreId = Convert.ToInt32(Console.ReadLine());
-                        sender.GetAuthorById(genreId);
+                        categoryService.GetCategoryById();
                         break;
                     case "3":
                         categoryService.AddCategory();

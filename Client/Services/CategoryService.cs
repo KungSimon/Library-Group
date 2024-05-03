@@ -68,6 +68,13 @@ namespace Client.Services
                 return;
             }
         }
+
+        public void GetCategoryById()
+        {
+            Console.WriteLine("Enter the ID of the category:");
+            int categoryId = Convert.ToInt32(Console.ReadLine());
+            sender.GetCategoryById(categoryId);
+        }
     }
 }
 
