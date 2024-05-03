@@ -14,3 +14,4 @@ namespace Library_Group.Objects
         public DbSet<Author> Author { get; set; }
     }
 }
+

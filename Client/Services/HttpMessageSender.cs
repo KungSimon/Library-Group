@@ -139,7 +139,7 @@ namespace Client.Services
 
             HttpClient client = new HttpClient();
             HttpContent httpContent = new StringContent(json, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = client.PostAsync("https://localhost:7093/api/author/add", httpContent).Result;
+            HttpResponseMessage response = client.PostAsync("https://localhost:7264/api/author", httpContent).Result;
             Console.WriteLine("Status code: " + response.StatusCode);
             if (response.IsSuccessStatusCode)
             {
