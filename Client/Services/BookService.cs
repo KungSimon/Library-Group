@@ -36,14 +36,14 @@ namespace Client.Services
             string name = Console.ReadLine();
             Console.WriteLine("Input Pagecount");
             int pages;
-            DateTime releasedate;
+            int releasedate;
             try
             {
                 pages = int.Parse(Console.ReadLine());
                 try
                 {
                     Console.WriteLine("Input Releasedate");
-                    releasedate = DateTime.Parse(Console.ReadLine());
+                    releasedate = int.Parse(Console.ReadLine());
                     sender.AddBook(id, name, pages, releasedate);
                 }
                 catch (Exception ex)
@@ -75,14 +75,14 @@ namespace Client.Services
             string title = Console.ReadLine();
             Console.WriteLine("Input new amount of pages.");
             int pageCount;
-            DateTime releasedate;
+            int releasedate;
             try
             {
                 pageCount = int.Parse(Console.ReadLine());
                 try
                 {
                     Console.WriteLine("Input new releasedate");
-                    releasedate = DateTime.Parse(Console.ReadLine());
+                    releasedate = int.Parse(Console.ReadLine());
                     sender.UpdateBook(id, title, pageCount, releasedate);
                 }
                 catch (Exception ex)

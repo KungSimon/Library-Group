@@ -11,10 +11,10 @@ namespace Client.Objects
         public int Id;
         public string Title { get; set; }
         public int Pages { get; set; }
-        public DateTime ReleaseDate { get; set; }
+        public int ReleaseDate { get; set; }
 
 
-        public Book(int id, string title, int pages, DateTime releaseDate)
+        public Book(int id, string title, int pages, int releaseDate)
         {
             Id = id;
             Title = title;
@@ -22,7 +22,7 @@ namespace Client.Objects
             ReleaseDate = releaseDate;
         }
 
-        public Book(string title, int pages, DateTime releaseDate)
+        public Book(string title, int pages, int releaseDate)
         {
             Id = 0;
             Title = title;
