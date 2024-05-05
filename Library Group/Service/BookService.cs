@@ -32,6 +32,11 @@ namespace Library_Group.Service
 
         public bool AddBook(Book book)
         {
+            if (!db.Author.Any(a => a.Id == book.AuthorId) || !db.Category.Any(c => c.Id == book.CategoryId))
+            {
+                return false;
+            }
+
             db.Book.Add(book);
             db.SaveChanges();
             return true;

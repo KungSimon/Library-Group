@@ -41,7 +41,7 @@ namespace Library_Group.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddCategory([FromBody] Category category)
+        public ActionResult AddCategory(Category category)
         {
             if (!ModelState.IsValid)
             {
@@ -57,7 +57,7 @@ namespace Library_Group.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult UpdateCategory(int id, [FromBody] Category category)
+        public ActionResult UpdateCategory(int id, Category category)
         {
             if (id != category.Id)
             {

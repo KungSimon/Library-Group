@@ -16,6 +16,11 @@ namespace Library_Group.Objects
         public int Pages { get; set; }
         public int ReleaseDate { get; set; }
 
+        [Required]
+        public int AuthorId { get; set; }
+        [Required]
+        public int CategoryId { get; set; }
+
         public Book(string title, int pages, int releaseDate)
         {
             Title = title;

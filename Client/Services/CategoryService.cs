@@ -32,7 +32,7 @@ namespace Client.Services
             int id = 0;
             Console.WriteLine("Input Name of the category: ");
             string name = Console.ReadLine();
-            sender.AddAuthor(id, name);
+            sender.AddCategory(id, name);
         }
 
         public void UpdateCategory()

@@ -41,7 +41,7 @@ namespace Library_Group.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddAuthor([FromBody] Author author)
+        public ActionResult AddAuthor(Author author)
         {
             if (!ModelState.IsValid)
             {
@@ -57,7 +57,7 @@ namespace Library_Group.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult UpdateAuthor(int id, [FromBody] Author author)
+        public ActionResult UpdateAuthor(int id, Author author)
         {
             if (id != author.Id)
             {

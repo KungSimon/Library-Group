@@ -13,7 +13,6 @@ namespace Client.Objects
         public int Pages { get; set; }
         public int ReleaseDate { get; set; }
 
-
         public Book(int id, string title, int pages, int releaseDate)
         {
             Id = id;

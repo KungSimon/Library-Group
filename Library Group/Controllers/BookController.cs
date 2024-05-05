@@ -41,7 +41,7 @@ namespace Library_Group.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddBook([FromBody] Book book)
+        public ActionResult AddBook(Book book)
         {
             if (!ModelState.IsValid)
             {
@@ -57,7 +57,7 @@ namespace Library_Group.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult UpdateBook(int id, [FromBody] Book book)
+        public ActionResult UpdateBook(int id, Book book)
         {
             if (id != book.Id)
             {

@@ -15,7 +15,7 @@ namespace Client.Services
         public List<Book> GetAllBooks()
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage response = client.GetAsync("https://localhost:7264/api/books").Result;
+            HttpResponseMessage response = client.GetAsync("https://localhost:7264/api/book").Result;
             Console.WriteLine("Status code " + response.StatusCode);
 
             if(response.IsSuccessStatusCode)
@@ -70,7 +70,7 @@ namespace Client.Services
         public void GetBookById(int id)
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage response = client.GetAsync("https://localhost:7264/api/book" + id).Result;
+            HttpResponseMessage response = client.GetAsync("https://localhost:7264/api/book/" + id).Result;
             Console.WriteLine("Status code " + (int)response.StatusCode + " : " + response.StatusCode);
 
             if (response.IsSuccessStatusCode)
@@ -86,7 +86,7 @@ namespace Client.Services
         public void GetAuthorById(int id)
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage response = client.GetAsync("https://localhost:7264/api/author" + id).Result;
+            HttpResponseMessage response = client.GetAsync("https://localhost:7264/api/author/" + id).Result;
             Console.WriteLine("Status code " + (int)response.StatusCode + " : " + response.StatusCode);
 
             if (response.IsSuccessStatusCode)
@@ -102,7 +102,7 @@ namespace Client.Services
         public void GetCategoryById(int id)
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage response = client.GetAsync("https://localhost:7264/api/category" + id).Result;
+            HttpResponseMessage response = client.GetAsync("https://localhost:7264/api/category/" + id).Result;
             Console.WriteLine("Status code " + (int)response.StatusCode + " : " + response.StatusCode);
 
             if (response.IsSuccessStatusCode)
@@ -169,7 +169,7 @@ namespace Client.Services
         public void DeleteBook(int id)
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage response = client.DeleteAsync($"https://localhost:7264/api/book{id}").Result;
+            HttpResponseMessage response = client.DeleteAsync($"https://localhost:7264/api/book/{id}").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -185,7 +185,7 @@ namespace Client.Services
         public void DeleteAuthor(int id)
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage response = client.DeleteAsync($"https://localhost:7264/api/author{id}").Result;
+            HttpResponseMessage response = client.DeleteAsync($"https://localhost:7264/api/author/{id}").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -201,7 +201,7 @@ namespace Client.Services
         public void DeleteCategory(int id)
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage response = client.DeleteAsync($"https://localhost:7264/api/category{id}").Result;
+            HttpResponseMessage response = client.DeleteAsync($"https://localhost:7264/api/category/{id}").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -221,7 +221,7 @@ namespace Client.Services
 
             HttpClient client = new HttpClient();
             HttpContent httpContent = new StringContent(json, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = client.PutAsync($"https://localhost:7264/api/book{id}", httpContent).Result;
+            HttpResponseMessage response = client.PutAsync($"https://localhost:7264/api/book/{id}", httpContent).Result;
             Console.WriteLine("Status code: " + response.StatusCode);
             if (response.IsSuccessStatusCode)
             {
@@ -240,7 +240,7 @@ namespace Client.Services
             string json = JsonConvert.SerializeObject(author);
             HttpClient client = new HttpClient();
             HttpContent httpContent = new StringContent(json, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = client.PutAsync($"https://localhost:7264/api/author{id}", httpContent).Result;
+            HttpResponseMessage response = client.PutAsync($"https://localhost:7264/api/author/{id}", httpContent).Result;
             Console.WriteLine("Status code: " + response.StatusCode);
             if (response.IsSuccessStatusCode)
             {
@@ -259,7 +259,7 @@ namespace Client.Services
             string json = JsonConvert.SerializeObject(category);
             HttpClient client = new HttpClient();
             HttpContent httpContent = new StringContent(json, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = client.PutAsync($"https://localhost:7264/api/category{id}", httpContent).Result;
+            HttpResponseMessage response = client.PutAsync($"https://localhost:7264/api/category/{id}", httpContent).Result;
             Console.WriteLine("Status code: " + response.StatusCode);
             if (response.IsSuccessStatusCode)
             {
