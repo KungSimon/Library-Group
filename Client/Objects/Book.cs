@@ -13,6 +13,9 @@ namespace Client.Objects
         public int Pages { get; set; }
         public int ReleaseDate { get; set; }
 
+        public int AuthorId { get; set; }
+        public int CategoryId { get; set; }
+
         public Book(int id, string title, int pages, int releaseDate)
         {
             Id = id;
@@ -21,12 +24,14 @@ namespace Client.Objects
             ReleaseDate = releaseDate;
         }
 
-        public Book(string title, int pages, int releaseDate)
+        public Book(string title, int pages, int releaseDate, int authorId, int categoryId)
         {
             Id = 0;
             Title = title;
             Pages = pages;
             ReleaseDate = releaseDate;
+            AuthorId = authorId;
+            CategoryId = categoryId;
         }
         public Book() { }
     }

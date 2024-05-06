@@ -24,38 +24,22 @@ namespace Client.Services
                 foreach (Book book in books)
                 {
                     Console.WriteLine("Id: " + book.Id + ", Title: " + book.Title +
-                        ", Pages: " + book.Pages + ", Releasedate: " + book.ReleaseDate);
+                        ", Pages: " + book.Pages + ", Releasedate: " + book.ReleaseDate + ", Author: " + book.AuthorId + ", Category: " + book.CategoryId);
                 }
             }
         }
 
         public void AddBook()
         {
-            int id = 0;
-            Console.WriteLine("Input Name of the book: ");
+            Console.WriteLine("Input name of the book:");
             string name = Console.ReadLine();
-            Console.WriteLine("Input Pagecount");
-            int pages;
-            int releasedate;
-            try
-            {
-                pages = int.Parse(Console.ReadLine());
-                try
-                {
-                    Console.WriteLine("Input Releasedate");
-                    releasedate = int.Parse(Console.ReadLine());
-                    sender.AddBook(id, name, pages, releasedate);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("That was not a date");
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("That was not a number");
-                return;
-            }
+
+            int pages = CheckInput("Input Pagecount");
+            int releasedate = CheckInput("Input Releasedate (Year)");
+            int authorId = CheckInput("Input Author ID");
+            int categoryId = CheckInput("Input Category ID");
+
+            sender.AddBook(name, pages, releasedate, authorId, categoryId);
         }
 
         public void UpdateBook()
@@ -118,6 +102,19 @@ namespace Client.Services
             Console.WriteLine("Enter the ID of the book:");
             int bookId = Convert.ToInt32(Console.ReadLine());
             sender.GetBookById(bookId); 
+        }
+
+        private int CheckInput(string input)
+        {
+            while (true)
+            {
+                Console.WriteLine(input);
+                if (int.TryParse(Console.ReadLine(), out int result))
+                {
+                    return result;
+                }
+                Console.WriteLine("Invalid input, please enter a valid number.");
+            }
         }
     }
 }
