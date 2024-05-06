@@ -1,0 +1,33 @@
+﻿@page
+@model Library_Group.Pages.CategoriesModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Categories</title>
+</head>
+<body>
+    <div class="container">
+        <div class="select-items">
+            <p class="select-heading">Select a Category</p>
+            <form method="post">
+                <select asp-for="SelectedCategoryId" asp-items="@(new SelectList(Model.Categories, "Id", "Name"))" onchange="this.form.submit();">
+                    <option value="">-Select a Category-</option>
+                </select>
+            </form>
+        </div>
+        <div class="book-grid">
+            @if (Model.Books != null && Model.Books.Count > 0 && Model.SelectedCategoryName != null)
+            {
+                @foreach (var book in Model.Books)
+                {
+                    <div class="book-item">
+                        <p id="title">@book.Title</p>
+                        <p>Pages: @book.Pages</p>
+                        <p>Year: @book.ReleaseDate</p>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</body>
+</html>

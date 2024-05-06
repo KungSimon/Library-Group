@@ -1,20 +1,20 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Library_Group.Objects; 
 
-namespace Library_Group.Pages
+public class IndexModel : PageModel
 {
-    public class IndexModel : PageModel
+    private readonly DatabaseContext _context;
+
+    public List<Book> Books { get; set; }
+
+    public IndexModel(DatabaseContext context)
     {
-        private readonly ILogger<IndexModel> _logger;
+        _context = context;
+    }
 
-        public IndexModel(ILogger<IndexModel> logger)
-        {
-            _logger = logger;
-        }
-
-        public void OnGet()
-        {
-
-        }
+    //Load all books from database
+    public void OnGet()
+    {
+        Books = _context.Book.ToList(); 
     }
 }

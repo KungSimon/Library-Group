@@ -1,0 +1,32 @@
+﻿@page
+@model Library_Group.Pages.AuthorsModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Authors</title>
+</head>
+<body>
+    <div class="container">
+        <div class="select-items">
+            <p class="select-heading">Select an Author</p>
+            <form method="post">
+                <select asp-for="SelectedAuthorId" asp-items="@(new SelectList(Model.Authors, "Id", "Name"))" onchange="this.form.submit();">
+                    <option value="">-Select an Author-</option>
+                </select>
+            </form>
+        </div>
+        <div class="book-grid">
+            @if (Model.Books != null && Model.Books.Count > 0 && Model.SelectedAuthorName != null)
+            {
+                @foreach (var book in Model.Books)
+                {
+                    <div class="book-item">
+                        <p id="title">@book.Title</p>
+                        <p>Year: @book.ReleaseDate</p>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</body>
+</html>

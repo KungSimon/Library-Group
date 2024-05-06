@@ -1,10 +1,22 @@
 ﻿@page
 @model IndexModel
-@{
-    ViewData["Title"] = "Home page";
-}
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="container">
+        <div class="book-grid">
+            @foreach (var book in Model.Books)
+            {
+                <div class="book-item">
+                    <p id="title">@book.Title</p>
+                    <p>Pages: @book.Pages</p>
+                    <p>Year: @book.ReleaseDate</p>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>
