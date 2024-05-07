@@ -23,6 +23,8 @@ body {
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 20px;
     padding: 20px;
+    color: hotpink;
+    background-color: darkviolet;
 }
 
 .book-item {
@@ -40,11 +42,13 @@ body {
 .select-heading {
     font-size: 20px;
     font-weight: 600;
+    color:hotpink;
 }
 
 .select-items {
     width: 100%;
     text-align: center;
     margin-top: 10px;
+    background-color:darkviolet;
 }
 /*//hejhej*/
