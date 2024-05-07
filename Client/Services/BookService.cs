@@ -31,76 +31,49 @@ namespace Client.Services
 
         public void AddBook()
         {
+            bool success = true;
             Console.WriteLine("Input name of the book:");
             string name = Console.ReadLine();
-
             int pages = CheckInput("Input Pagecount");
             int releasedate = CheckInput("Input Releasedate (Year)");
             int authorId = CheckInput("Input Author ID");
+            if (sender.AuthorExists(authorId) == false)
+            {
+                Console.WriteLine("There is no author with that id.");
+                return;
+            }
             int categoryId = CheckInput("Input Category ID");
 
+            if (sender.CategoryExists(authorId) == false)
+            {
+                Console.WriteLine("There is no category with that id.");
+                return;
+            }
             sender.AddBook(name, pages, releasedate, authorId, categoryId);
         }
 
+
+
         public void UpdateBook()
         {
-            Console.WriteLine("Input id of book to edit.");
-            int id;
-            try
-            {
-                id = int.Parse(Console.ReadLine());
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("That was not a number.");
-                return;
-            }
+            int bookId = CheckInput("Input book id of the book you want to change.");
             Console.WriteLine("Input new title.");
             string title = Console.ReadLine();
-            Console.WriteLine("Input new amount of pages.");
-            int pageCount;
-            int releasedate;
-            try
-            {
-                pageCount = int.Parse(Console.ReadLine());
-                try
-                {
-                    Console.WriteLine("Input new releasedate");
-                    releasedate = int.Parse(Console.ReadLine());
-                    sender.UpdateBook(id, title, pageCount, releasedate);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("That was not a date");
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("That was not a number.");
-                return;
-            }
+            int pageCount = CheckInput("Enter the new amount of pages");
+            int releasedate = CheckInput("Enter the new release date.");
+            sender.UpdateBook(bookId, title, pageCount, releasedate);
         }
+        
 
         public void DeleteBook()
         {
-            Console.WriteLine("Enter the id of the book you want to remove: ");
-            int id;
-            try
-            {
-                id = int.Parse(Console.ReadLine());
-                sender.DeleteBook(id);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("That was not a number.");
-                return;
-            }
+            int bookId = CheckInput("Enter the id of the book you want to remove: ");
+            sender.DeleteBook(bookId);
         }
 
         public void GetBookById()
         {
-            Console.WriteLine("Enter the ID of the book:");
-            int bookId = Convert.ToInt32(Console.ReadLine());
+            int bookId = CheckInput("Input book ID");
             sender.GetBookById(bookId); 
         }
 

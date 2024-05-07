@@ -37,43 +37,36 @@ namespace Client.Services
 
         public void UpdateAuthor()
         {
-            Console.WriteLine("Input id of author to edit.");
-            int id;
-            try
-            {
-                id = int.Parse(Console.ReadLine());
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("That was not a number.");
-                return;
-            }
+            int authorId = CheckInput("Input author ID");
             Console.WriteLine("Input new name.");
             string title = Console.ReadLine();
-            sender.UpdateAuthor(id, title);
+            sender.UpdateAuthor(authorId, title);
         }
 
         public void DeleteAuthor()
         {
-            Console.WriteLine("Enter the id of the author you want to remove: ");
-            int id;
-            try
-            {
-                id = int.Parse(Console.ReadLine());
-                sender.DeleteAuthor(id);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("That was not a number.");
-                return;
-            }
+            int authorId = CheckInput("Input author ID");
+            sender.DeleteAuthor(authorId);
         }
 
         public void GetAuthorById()
         {
-            Console.WriteLine("Enter the ID of the author:");
-            int authorId = Convert.ToInt32(Console.ReadLine());
+            int authorId = CheckInput("Input author ID");
             sender.GetAuthorById(authorId);
+        }
+
+
+        private int CheckInput(string input)
+        {
+            while (true)
+            {
+                Console.WriteLine(input);
+                if (int.TryParse(Console.ReadLine(), out int result))
+                {
+                    return result;
+                }
+                Console.WriteLine("Invalid input, please enter a valid number.");
+            }
         }
     }
 }

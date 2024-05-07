@@ -37,43 +37,36 @@ namespace Client.Services
 
         public void UpdateCategory()
         {
-            Console.WriteLine("Input id of category to edit.");
-            int id;
-            try
-            {
-                id = int.Parse(Console.ReadLine());
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("That was not a number.");
-                return;
-            }
+            int categoryId = CheckInput("Input category ID");
             Console.WriteLine("Input new category name.");
             string title = Console.ReadLine();
-            sender.UpdateCategory(id, title);
+            sender.UpdateCategory(categoryId, title);
         }
 
         public void DeleteCategory()
         {
-            Console.WriteLine("Enter the id of the category you want to remove: ");
-            int id;
-            try
-            {
-                id = int.Parse(Console.ReadLine());
-                sender.DeleteCategory(id);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("That was not a number.");
-                return;
-            }
+            int categoryId = CheckInput("Input category ID");
+            sender.DeleteCategory(categoryId);
         }
 
         public void GetCategoryById()
         {
-            Console.WriteLine("Enter the ID of the category:");
-            int categoryId = Convert.ToInt32(Console.ReadLine());
+            int categoryId = CheckInput("Input category ID");
             sender.GetCategoryById(categoryId);
+        }
+
+
+        private int CheckInput(string input)
+        {
+            while (true)
+            {
+                Console.WriteLine(input);
+                if (int.TryParse(Console.ReadLine(), out int result))
+                {
+                    return result;
+                }
+                Console.WriteLine("Invalid input, please enter a valid number.");
+            }
         }
     }
 }

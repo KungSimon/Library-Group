@@ -79,7 +79,6 @@ namespace Client.Services
             if (response.IsSuccessStatusCode)
             {
                 string result = response.Content.ReadAsStringAsync().Result;
-                Console.WriteLine(result);
                 Book book = JsonConvert.DeserializeObject<Book>(result);
                 Console.WriteLine("Id: " + book.Id + ", Title: " + book.Title + ", Pages: " + book.Pages + ", Release Date: " + book.ReleaseDate + ", Author: " + book.AuthorId + ", Category: " + book.CategoryId);
             }
@@ -95,7 +94,6 @@ namespace Client.Services
             if (response.IsSuccessStatusCode)
             {
                 string result = response.Content.ReadAsStringAsync().Result;
-                Console.WriteLine(result);
                 Author author = JsonConvert.DeserializeObject<Author>(result);
                 Console.WriteLine("Id: " + author.Id + ", Name: " + author.Name);
             }
@@ -111,7 +109,6 @@ namespace Client.Services
             if (response.IsSuccessStatusCode)
             {
                 string result = response.Content.ReadAsStringAsync().Result;
-                Console.WriteLine(result);
                 Category category = JsonConvert.DeserializeObject<Category>(result);
                 Console.WriteLine("Id: " + category.Id + ", Name: " + category.Name);
             }
@@ -272,6 +269,31 @@ namespace Client.Services
             {
                 Console.WriteLine($"Failed to update category with ID {id}.");
             }
+        }
+
+
+        public bool BookExists(int bookId)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = client.GetAsync(baseUrl + "book/" + bookId).Result;
+
+            return response.IsSuccessStatusCode;
+        }
+
+        public bool AuthorExists(int authorId)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = client.GetAsync(baseUrl + "author/" + authorId).Result;
+
+            return response.IsSuccessStatusCode;
+        }
+
+        public bool CategoryExists(int categoryId)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = client.GetAsync(baseUrl + "category/" + categoryId).Result;
+
+            return response.IsSuccessStatusCode;
         }
     }
 }
